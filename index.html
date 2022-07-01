@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What To Do</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What To Do</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>What To Do</h1>
+      <form id="new-todo-form">
+        <input
+          type="text"
+          id="new-todo-input"
+          placeholder="What do you need to do?"
+        />
+        <input 
+          type="submit" 
+          id="new-todo-submit" 
+          value="Add todo" 
+        />
+      </form>
+    </header>
+
+    <main>
+      <div class="todo-list">
+        <h2>Todo's</h2>
+        <div id="todos">
+          <!-- <div class="todo">
+            <div class="content">
+              <input 
+                type="text"
+                class="text"
+                value="My new todo"
+                readonly
+              />
+            </div>
+            <div class="controls">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </body>
 </html>
