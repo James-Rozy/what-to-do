@@ -12,7 +12,7 @@
     <main class="container">
       <header>
         <h1 id="title">
-          Hey, <input type="text" id="name" placeholder="Name here" />!
+          Hey, <input type="text" id="name" placeholder="Name here" />
         </h1>
       </header>
 
@@ -30,21 +30,21 @@
 
           <h4>Which category is this?</h4>
           <div class="categories">
-            <div class="category-work">
-              <input type="radio" name="category" id="work" value="work" />
+            <label class="category">
+              <input type="radio" name="work" id="work" value="work" />
               <span class="bubble work"></span>
-              <label for="work">Work</label>
-            </div>
-            <div class="category-personal">
+              <p>Work</p>
+            </label>
+            <label class="category">
               <input
                 type="radio"
-                name="category"
+                name="personal"
                 id="personal"
                 value="personal"
               />
               <span class="bubble personal"></span>
-              <label for="personal">Personal</label>
-            </div>
+              <p>Personal</p>
+            </label>
           </div>
 
           <input type="submit" value="Add todo" />

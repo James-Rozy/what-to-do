@@ -1,20 +1,23 @@
 :root {
   --main-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
+  --neutral-100: #f5f5f5;
   --neutral-200: #e5e5e5;
   --neutral-300: #d4d4d4;
   --neutral-400: #a3a3a3;
+  --neutral-500: #71717a;
+  --neutral-600: #525252;
   --neutral-700: #404040;
   --neutral-800: #262626;
   --neutral-900: #171717;
 
   --indigo-400: #818cf8;
   --rose-400: #fb7185;
+  --yellow-600: #ca8a04;
   --red-800: #991b1b;
 
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --work-shadow: 0 0 5px rgba(129, 140, 248, 0.75);
-  --personal-shadow: 0 0 5px rgba(251, 113, 133, 0.75);
+  --work-shadow: 0 0 5px rgba(129, 140, 248, 0.85);
+  --personal-shadow: 0 0 5px rgba(251, 113, 133, 0.85);
 }
 
 *,
@@ -50,9 +53,202 @@ main > div {
   padding-right: 1.5rem;
 }
 
-header h1 {
+h1 {
   font-size: 2.5rem;
   font-weight: 300;
   color: var(--neutral-300);
   margin-bottom: 1rem;
+}
+
+h3 {
+  color: var(--neutral-200);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  color: var(--neutral-200);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+header #title {
+  display: flex;
+}
+
+header #title input {
+  margin-left: 0.5rem;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+header #title,
+header #title input {
+  color: var(--neutral-300);
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.make-todo input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  color: var(--neutral-100);
+  background-color: var(--neutral-400);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.make-todo .categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.make-todo .categories label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: var(--neutral-400);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid var(--indigo-400);
+  box-shadow: var(--work-shadow);
+}
+
+.bubble.personal {
+  border-color: var(--rose-400);
+  box-shadow: var(--personal-shadow);
+}
+
+.bubble::after {
+  content: "";
+  display: block;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  background-color: var(--indigo-400);
+  box-shadow: var(--work-shadow);
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+}
+
+.bubble.personal::after {
+  background-color: var(--rose-400);
+  box-shadow: var(--personal-shadow);
+}
+
+input:checked ~ .bubble::after {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+.make-todo .categories .category p {
+  color: var(--neutral-100);
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.make-todo input[type="submit"] {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  color: var(--neutral-100);
+  background-color: var(--rose-400);
+  border-radius: 0.5rem;
+  box-shadow: var(--personal-shadow);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.make-todo input[type="submit"]:hover,
+.todo-item .actions button:hover {
+  opacity: 0.75;
+}
+
+.make-todo input[type="submit"]:active,
+.todo-item .actions button:active {
+  opacity: 0.75;
+  transform: translateY(2px);
+}
+
+.todo-list .list {
+  margin: 1rem 0;
+}
+
+.todo-list .todo-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--neutral-400);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.todo-item label {
+  display: block;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.todo-item .todo-content {
+  flex: 1 1 0%;
+}
+
+.todo-item .todo-content input {
+  color: var(--neutral-100);
+  font-size: 1.2rem;
+}
+
+.todo-item .actions {
+  display: flex;
+  align-items: center;
+}
+
+.todo-item .actions button {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--neutral-100);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;  
+}
+
+.todo-item .actions .edit {
+  margin-right: 0.5rem;
+  background-color: var(--yellow-600);
+}
+
+.todo-item .actions .delete {
+  background-color: var(--red-800);
+}
+
+.todo-item.done .todo-content input {
+  text-decoration: line-through;
+  color: var(--neutral-300);
 }
