@@ -1,22 +1,37 @@
 :root {
   --main-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
   --neutral-200: #e5e5e5;
   --neutral-300: #d4d4d4;
   --neutral-400: #a3a3a3;
   --neutral-700: #404040;
   --neutral-800: #262626;
   --neutral-900: #171717;
-  --rose-400: #fb7185;
+
   --indigo-400: #818cf8;
+  --rose-400: #fb7185;
+  --red-800: #991b1b;
+
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --work-shadow: 0 0 5px rgba(129, 140, 248, 0.75);
+  --personal-shadow: 0 0 5px rgba(251, 113, 133, 0.75);
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: var(--main-font-family);
+}
+
+input:not([type="radio"]):not([type="checkbox"]), button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
 }
 
 body {
@@ -27,11 +42,12 @@ body {
   color: var(--neutral-200);
 }
 
-header {
-  max-width: 800px;
-  width: 100%;
-  padding: 2rem 1rem;
-  margin: 0 auto;
+main > header,
+main > div {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 header h1 {
@@ -39,122 +55,4 @@ header h1 {
   font-weight: 300;
   color: var(--neutral-300);
   margin-bottom: 1rem;
-}
-
-input, 
-button {
-  appearance: none;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-#new-todo-form {
-  display: flex;
-}
-
-#new-todo-input {
-  flex: 1 1 0%;
-  background-color: var(--neutral-800);
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-right: 1rem;
-  color: var(--neutral-200);
-  font-size: 1.2rem;
-}
-
-#new-todo-input::placeholder {
-  color: var(--neutral-300);
-}
-
-#new-todo-submit {
-  color: var(--rose-400);
-  font-size: 1.2rem;
-  font-weight: 700;
-  background-image: linear-gradient(to right, var(--rose-400), var(--indigo-400));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-#new-todo-submit:hover {
-  opacity: 0.8;
-}
-
-#new-todo-submit:active {
-  opacity: 0.6;
-}
-
-main {
-  flex: 1 1 0%;
-  padding: 2rem 1rem;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.todo-list {
-  padding: 1rem;
-}
-
-.todo-list h2 {
-  font-size: 1.7rem;
-  font-weight: 300;
-  color: var(--neutral-300);
-  margin-bottom: 1rem;
-}
-
-#todos .todo {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--neutral-900);
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-
-
-#todos .todo .content .text {
-  color: var(--neutral-200);
-  font-size: 1.2rem;
-  width: 100%;
-  display: block;
-  transition: 0.2s;
-}
-
-#todos .todo .content .text:not(:read-only) {
-  color: var(--rose-400);
-}
-
-#todos .todo .controls {
-  display: flex;
-  margin: 0 -0.5rem;
-}
-
-.todo .controls button {
-  cursor: pointer;
-  margin: 0 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.2s;
-}
-
-.todo .controls button:hover {
-  opacity: 0.8;
-}
-
-.todo .controls button:active {
-  opacity: 0.6;
-}
-
-.todo .controls .edit {
-  background-image: linear-gradient(to right, var(--rose-400), var(--indigo-400));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.todo .controls .delete {
-  color: crimson;
 }

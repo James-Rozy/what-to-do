@@ -9,43 +9,84 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>What To Do</h1>
-      <form id="new-todo-form">
-        <input
-          type="text"
-          id="new-todo-input"
-          placeholder="What do you need to do?"
-        />
-        <input 
-          type="submit" 
-          id="new-todo-submit" 
-          value="Add todo" 
-        />
-      </form>
-    </header>
+    <main class="container">
+      <header>
+        <h1 id="title">
+          Hey, <input type="text" id="name" placeholder="Name here" />!
+        </h1>
+      </header>
 
-    <main>
-      <div class="todo-list">
-        <h2>Todo's</h2>
-        <div id="todos">
-          <!-- <div class="todo">
-            <div class="content">
-              <input 
-                type="text"
-                class="text"
-                value="My new todo"
-                readonly
-              />
+      <div class="make-todo">
+        <h3>MAKE A TODO</h3>
+
+        <form action="#" id="new-todo-form">
+          <h4>What do you need to do?</h4>
+          <input
+            type="text"
+            name="todo-summary"
+            id="todo-summary"
+            placeholder="e.g. write some code"
+          />
+
+          <h4>Which category is this?</h4>
+          <div class="categories">
+            <div class="category-work">
+              <input type="radio" name="category" id="work" value="work" />
+              <span class="bubble work"></span>
+              <label for="work">Work</label>
             </div>
-            <div class="controls">
+            <div class="category-personal">
+              <input
+                type="radio"
+                name="category"
+                id="personal"
+                value="personal"
+              />
+              <span class="bubble personal"></span>
+              <label for="personal">Personal</label>
+            </div>
+          </div>
+
+          <input type="submit" value="Add todo" />
+        </form>
+      </div>
+
+      <div class="todo-list">
+        <h3>TODO LIST</h3>
+        <div class="list">
+          <div class="todo-item">
+            <label>
+              <input type="checkbox" />
+              <span class="bubble work"></span>
+            </label>
+
+            <div class="todo-content">
+              <input type="text" value="Write some code" readonly>
+            </div>
+
+            <div class="actions">
               <button class="edit">Edit</button>
               <button class="delete">Delete</button>
-            </div> -->
+            </div>
+          </div>
+
+          <div class="todo-item">
+            <label>
+              <input type="checkbox" />
+              <span class="bubble personal"></span>
+            </label>
+
+            <div class="todo-content">
+              <input type="text" value="Make dinner" readonly>
+            </div>
+
+            <div class="actions">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div>
           </div>
         </div>
       </div>
     </main>
-
   </body>
 </html>
