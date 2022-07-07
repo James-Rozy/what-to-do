@@ -29,11 +29,12 @@
 })();
 
 const displayTodos = () => {
-  const todoList = document.querySelector(".todo-list")
-  const currList = document.querySelector(".list");
-  const newList = document.createElement("div");
+  const list = document.querySelector(".list");
 
-  currList.remove();
+  // remove old items from the list before updating
+  while(list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("div");
@@ -41,6 +42,7 @@ const displayTodos = () => {
     const input = document.createElement("input");
     const span = document.createElement("span");
     const content = document.createElement("div");
+    const text = document.createElement("input");
     const actions = document.createElement("div");
     const edit = document.createElement("button");
     const deleteBtn = document.createElement("button");
@@ -48,6 +50,7 @@ const displayTodos = () => {
     todoItem.classList.add("todo-item");
     span.classList.add("bubble");
     content.classList.add("todo-content");
+    text.classList.add("text-content");
     actions.classList.add("actions");
     edit.classList.add("edit");
     deleteBtn.classList.add("delete");
@@ -55,24 +58,28 @@ const displayTodos = () => {
     input.type = "checkbox";
     input.checked = todo.done;
 
+    text.type = "text";
+    text.readOnly = true;
+    text.setAttribute("value", todo.content);
+
     if (todo.category === "perosnal") {
       span.classList.add("personal");
     } else {
       span.classList.add("work");
     }
 
-    content.textContent = `<input type="text" value="${todo.content}" readonly />`;
     edit.textContent = "Edit";
     deleteBtn.textContent = "Delete";
 
     label.appendChild(input);
     label.appendChild(span);
+    content.appendChild(text);
     actions.appendChild(edit);
     actions.appendChild(deleteBtn);
     todoItem.appendChild(label);
     todoItem.appendChild(content);
     todoItem.appendChild(actions);
-    newList.appendChild(todoItem);
+    list.appendChild(todoItem);
 
     if (todo.done) {
       todoItem.classList.add("done");
@@ -92,11 +99,11 @@ const displayTodos = () => {
     });
 
     edit.addEventListener("click", (e) => {
-      const input = content.querySelector("input");
-      input.removeAttribute("readonly");
-      input.focus();
-      input.addEventListener("blur", (e) => {
-        input.setAttribute("readonly", true);
+      const textInput = content.querySelector(".text-content");
+      textInput.readOnly = false;
+      textInput.focus();
+      textInput.addEventListener("blur", (e) => {
+        textInput.setAttribute("readonly", true);
         todo.content = e.target.value;
         localStorage.setItem("todos", JSON.stringify(todos));
         displayTodos();
@@ -109,6 +116,4 @@ const displayTodos = () => {
       displayTodos();
     });
   });
-
-  todoList.appendChild(newList);
 };
