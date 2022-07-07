@@ -62,7 +62,7 @@ const displayTodos = () => {
     text.readOnly = true;
     text.setAttribute("value", todo.content);
 
-    if (todo.category === "perosnal") {
+    if (todo.category === "personal") {
       span.classList.add("personal");
     } else {
       span.classList.add("work");
