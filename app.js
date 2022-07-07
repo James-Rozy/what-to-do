@@ -1,5 +1,5 @@
 (() => {
-  my_todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos = JSON.parse(localStorage.getItem("todos")) || [];
 
   const nameInput = document.querySelector("#name");
   const newTodoForm = document.querySelector("#new-todo-form");
@@ -29,11 +29,11 @@
 })();
 
 const displayTodos = () => {
-  const todosList = document.querySelector("#todo-list");
+  const todoList = document.querySelector(".todo-list")
+  const currList = document.querySelector(".list");
+  const newList = document.createElement("div");
 
-  while (todosList.firstChild) {
-    todosList.removeChild(todosList.firstChild);
-  }
+  currList.remove();
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("div");
@@ -72,7 +72,7 @@ const displayTodos = () => {
     todoItem.appendChild(label);
     todoItem.appendChild(content);
     todoItem.appendChild(actions);
-    todosList.appendChild(todoItem);
+    newList.appendChild(todoItem);
 
     if (todo.done) {
       todoItem.classList.add("done");
@@ -109,4 +109,6 @@ const displayTodos = () => {
       displayTodos();
     });
   });
+
+  todoList.appendChild(newList);
 };
